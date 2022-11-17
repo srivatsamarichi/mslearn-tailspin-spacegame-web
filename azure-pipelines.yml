@@ -40,12 +40,12 @@ stages:
     - task: SonarCloudAnalyze@1
       displayName: 'Run Code Analysis'
     
-    - task: DotNetCoreCLI@2
-      displayName: 'Test the project'
-      inputs:
-        command: 'test'
-        arguments: --configuration $(BuildConfiguration)
-        testRunTitle: 'Spacegame'
+    # - task: DotNetCoreCLI@2
+    #   displayName: 'Test the project'
+    #   inputs:
+    #     command: 'test'
+    #     arguments: --configuration $(BuildConfiguration)
+    #     testRunTitle: 'Spacegame'
 
     - task: DotNetCoreCLI@2
       displayName: 'Publish the project'
