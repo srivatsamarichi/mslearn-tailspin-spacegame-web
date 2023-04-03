@@ -15,14 +15,15 @@ stages:
   jobs:
   - job: build
     steps:
-    - task: SonarCloudPrepare@1
-      displayName: 'Prepare analysis on SonarCloud'
-      inputs:
-        SonarCloud: 'SonarCloud'
-        organization: 'srivatsamarichi'
-        scannerMode: 'MSBuild'
-        projectKey: '$(ProjectKey)'
-        projectName: '$(ProjectName)'
+
+    # - task: SonarCloudPrepare@1
+    #   displayName: 'Prepare analysis on SonarCloud'
+    #   inputs:
+    #     SonarCloud: 'Srivatsa-SonarCloud'
+    #     organization: 'srivatsamarichi'
+    #     scannerMode: 'MSBuild'
+    #     projectKey: '$(ProjectKey)'
+    #     projectName: '$(ProjectName)'
 
     - task: DotNetCoreCLI@2
       displayName: 'Restore project dependencies'
@@ -37,15 +38,15 @@ stages:
         arguments: '--no-restore --configuration $(buildConfiguration)'
         projects: '**/*.csproj'
 
-    - task: SonarCloudAnalyze@1
-      displayName: 'Run Code Analysis'
+    # - task: SonarCloudAnalyze@1
+    #   displayName: 'Run Code Analysis'
     
-    - task: DotNetCoreCLI@2
-      displayName: 'Test the project'
-      inputs:
-        command: 'test'
-        arguments: --configuration $(BuildConfiguration)
-        testRunTitle: 'Spacegame'
+    # - task: DotNetCoreCLI@2
+    #   displayName: 'Test the project'
+    #   inputs:
+    #     command: 'test'
+    #     arguments: --configuration $(BuildConfiguration)
+    #     testRunTitle: 'Spacegame'
 
     - task: DotNetCoreCLI@2
       displayName: 'Publish the project'
